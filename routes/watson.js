@@ -46,12 +46,12 @@ router.put('/:twitteruser', function(req, res) {
             });
           });
           console.log(array);
-          res.json(array);
+          return res.json(array);
         }
       });
     })
     .catch(function(e) {
-      console.log(e);
+      console.error(e);
     });
 });
 

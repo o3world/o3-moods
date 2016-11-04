@@ -7,30 +7,54 @@ angular.module('mood.service', [
 .factory('moodService', [
 'R',
 (R) => {
-  function determinePreference(profile) {
-    const curiosityPercentage = getCuriosityPercentage(profile);
-    const libertyPercentage = getLibertyPercentage(profile);
+  function determineMoodHue(profile) {
+    const extraversionPercentage = getExtraversionPercentage(profile);
+    const neuroticismPercentage = getNeuroticismPercentage(profile);
+    const agreeablenessPercentage = getAgreeablenessPercentage(profile);
+    const opennessPercentage = getOpennessPercentage(profile);
+    const conscientiousnessPercentage = getConscientiousnessPercentage(profile);
 
-    if (curiosityPercentage >= 0.8 || libertyPercentage >= 0.8) {
-      return 'light';
-    } else if (curiosityPercentage >= 0.5 || libertyPercentage >= 0.5) {
-      return 'medium';
+    const extraversionModifier = getModifier(extraversionPercentage);
+    const neuroticismModifier = getModifier(neuroticismPercentage);
+    const agreeablenessModifier = getModifier(agreeablenessPercentage) * 0.25;
+    const opennessModifier = getModifier(opennessPercentage) * 0.75;
+    const conscientiousnessModifier = getModifier(conscientiousnessPercentage);
+
+    let red = Math.round(neuroticismModifier),
+        green = Math.round((agreeablenessModifier + opennessModifier)),
+        blue = Math.round(conscientiousnessModifier);
+
+    if (extraversionModifier >= 127) {
+      red = (Math.round(neuroticismModifier) * 0.5) + (Math.round(extraversionModifier) * 0.5);
     } else {
-      return 'dark';
+      red = (Math.round(conscientiousnessModifier) * 0.5) + (Math.round(extraversionModifier) * 0.5);
     }
+
+    let moodHue = {
+      red: red,
+      green: green,
+      blue: blue
+    };
+
+    return moodHue;
   }
 
-  const findCuriosity = R.find(R.propEq('id', 'Curiosity'));
-  const findLiberty = R.find(R.propEq('id', 'Liberty'));
+  const findExtraversion = R.find(R.propEq('id', 'Extraversion'));
+  const findNeuroticism = R.find(R.propEq('id', 'Neuroticism'));
+  const findAgreeableness = R.find(R.propEq('id', 'Agreeableness'));
+  const findOpenness = R.find(R.propEq('id', 'Openness to change'));
+  const findConscientiousness = R.find(R.propEq('id', 'Conscientiousness'));
 
   const getPercentage = R.prop('percentage');
+  const getModifier = R.multiply(255);
 
-  const getCuriosityPercentage = R.pipe(findCuriosity, getPercentage);
-  const getLibertyPercentage = R.pipe(findLiberty, getPercentage);
+  const getExtraversionPercentage = R.pipe(findExtraversion, getPercentage);
+  const getNeuroticismPercentage = R.pipe(findNeuroticism, getPercentage);
+  const getAgreeablenessPercentage = R.pipe(findAgreeableness, getPercentage);
+  const getOpennessPercentage = R.pipe(findOpenness, getPercentage);
+  const getConscientiousnessPercentage = R.pipe(findConscientiousness, getPercentage);
 
   return {
-    determinePreference,
-    getCuriosityPercentage,
-    getLibertyPercentage
+    determineMoodHue
   };
 }]);

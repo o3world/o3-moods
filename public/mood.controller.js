@@ -10,9 +10,7 @@ angular.module('mood.controller', [])
       .success(data => {
         $scope.array = data;
 
-        $scope.preference = moodService.determinePreference(data);
-        $scope.curiosity = moodService.getCuriosityPercentage(data);
-        $scope.liberty = moodService.getLibertyPercentage(data);
+        $scope.moodHue = moodService.determineMoodHue(data);
       })
       .error(err => {
         console.log(err);
