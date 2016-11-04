@@ -1,0 +1,23 @@
+{
+  "maxerr": 50,
+
+  "bitwise": true,
+  "curly": true,
+  "eqeqeq": true,
+  "esversion": 6,
+  "forin": true,
+  "freeze": true,
+  "noarg": true,
+  "noempty": true,
+  "nonbsp": true,
+  "nonew": true,
+  "undef": true,
+  "unused": true,
+  "strict": "global",
+  "varstmt": true,
+
+  "devel": true,
+  "node": true,
+
+  "globals": {}
+}

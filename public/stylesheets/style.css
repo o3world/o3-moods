@@ -1,0 +1,147 @@
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  background-color: #1b1b1b;
+  color: #fff;
+  font-family: "Roboto Slab", Georgia, Times, serif;
+  font-size: 14px;
+  text-align: center;
+  margin: 0;
+}
+
+h1, h2, h3 {
+  font-family: Lato, Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+  margin-top: 0;
+}
+
+h1 {
+  font-size: 1.75em;
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-size: 1.25em;
+  margin-bottom: 10px;
+}
+
+h3 {
+  font-size: 1.125em;
+}
+
+input {
+  text-align: center;
+  border-radius: 0;
+  -webkit-appearance: none;
+}
+
+input[type='text'], textarea {
+  font-size: 1em;
+}
+
+.container {
+  display: block;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 20px;
+}
+
+.logo {
+  height: 100px;
+  width: 100px;
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  padding: 10px 10px;
+  color: #161515;
+  font-size: 1em;
+  line-height: 1.5;
+  background-color: #f9f9f9;
+  font-family: Lato, Helvetica, Arial, sans-serif;
+  border-radius: 0;
+  border: 2px solid transparent;
+}
+
+.form-control-vertical {
+  margin-bottom: 10px;
+}
+
+.form-control:focus, .form-control:active {
+  outline: none;
+}
+
+.btn {
+  display: inline-block;
+  width: 100%;
+  background-color: #ca0000;
+  background-image: none;
+  color: #fff;
+  font-family: Lato, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1;
+  text-align: center;
+  text-transform: uppercase;
+  vertical-align: middle;
+  white-space: nowrap;
+  border-radius: 0;
+  border: 3px solid transparent;
+  padding: 16px 30px;
+  margin-bottom: 0;
+  touch-action: manipulation;
+  cursor: pointer;
+  transition: border 0.2s, background 0.2s;
+}
+
+.btn:hover, .btn:focus {
+  background-color: #e00000;
+  text-decoration: none;
+  outline: none;
+}
+
+::-webkit-input-placeholder {
+  color: #161515;
+  text-transform: uppercase;
+}
+::-moz-placeholder {
+  color: #161515;
+  text-transform: uppercase;
+}
+:-ms-input-placeholder {
+  color: #161515;
+  text-transform: uppercase;
+}
+:-moz-placeholder {
+  color: #161515;
+  text-transform: uppercase;
+}
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
+
+@media (min-width: 480px) {
+  body {
+    font-size: 16px;
+  }
+
+  .container {
+    width: 33.3333%;
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+
+  .logo {
+    height: 150px;
+    width: 150px;
+  }
+}
