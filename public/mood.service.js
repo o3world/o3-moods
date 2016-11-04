@@ -1,10 +1,10 @@
 'use strict';
 
-angular.module('personality.service', [
+angular.module('mood.service', [
   'ramda'
 ])
 
-.factory('personalityService', [
+.factory('moodService', [
 'R',
 (R) => {
   function determinePreference(profile) {

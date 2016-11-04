@@ -1,11 +1,11 @@
 'use strict';
 
-import './personality.module';
+import './mood.module';
 import './ramda.module';
 import './percent.filter';
 
 angular.module('app', [
-  'personality',
+  'mood',
   'percent.filter',
   'ramda'
 ]);
