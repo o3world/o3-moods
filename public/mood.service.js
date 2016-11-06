@@ -16,24 +16,35 @@ angular.module('mood.service', [
 
     const extraversionModifier = getModifier(extraversionPercentage);
     const neuroticismModifier = getModifier(neuroticismPercentage);
-    const agreeablenessModifier = getModifier(agreeablenessPercentage) * 0.25;
-    const opennessModifier = getModifier(opennessPercentage) * 0.75;
+    const agreeablenessModifier = getModifier(agreeablenessPercentage);
+    const opennessModifier = getModifier(opennessPercentage);
     const conscientiousnessModifier = getModifier(conscientiousnessPercentage);
 
     let red = Math.round(neuroticismModifier),
-        green = Math.round((agreeablenessModifier + opennessModifier)),
+        green = Math.round((opennessModifier * 0.5) + (agreeablenessModifier * 0.5)),
         blue = Math.round(conscientiousnessModifier);
 
     if (extraversionModifier >= 127) {
-      red = (Math.round(neuroticismModifier) * 0.5) + (Math.round(extraversionModifier) * 0.5);
+      red = Math.round((neuroticismModifier * 0.5) + (extraversionModifier * 0.5));
     } else {
-      red = (Math.round(conscientiousnessModifier) * 0.5) + (Math.round(extraversionModifier) * 0.5);
+      blue = Math.round((conscientiousnessModifier * 0.5) + (extraversionModifier * 0.5));
+    }
+
+    if (red > blue && red > green) {
+      blue = Math.max((blue - 50), 0);
+      green = Math.max((green - 50), 0);
+    } else if (blue > red && blue > green) {
+      red = Math.max((red - 50), 0);
+      green = Math.max((green - 50), 0);
+    } else {
+      red = Math.max((red - 50), 0);
+      blue = Math.max((red - 50), 0);
     }
 
     let moodHue = {
-      red: red,
-      green: green,
-      blue: blue
+      red: Math.min(red, 255),
+      green: Math.min(green, 255),
+      blue: Math.min(blue, 255)
     };
 
     return moodHue;
