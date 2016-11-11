@@ -55,4 +55,27 @@ router.put('/:twitteruser', function(req, res) {
     });
 });
 
+
+router.post('/setMoodLight', function(req, res) {
+  let hueApi = req.app.get('hueApiClient');
+  let displayResult = function(result) {
+    console.log(JSON.stringify(result, null, 2));
+  };
+
+  console.log(req.body);
+
+  let state = lightState.create();
+
+  hueApi.setLightState(1, state.rgb(req.body.red, req.body.green, req.body.blue))
+    .then(displayResult)
+    .done();
+  hueApi.setLightState(2, state.rgb(req.body.red, req.body.green, req.body.blue))
+    .then(displayResult)
+    .done();
+  hueApi.setLightState(3, state.rgb(req.body.red, req.body.green, req.body.blue))
+    .then(displayResult)
+    .done();
+  return res.status(200);
+});
+
 module.exports = router;

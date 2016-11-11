@@ -7,12 +7,17 @@ angular.module('mood.controller', [])
 ($scope, $http, moodService) => {
   $scope.getData = () => {
     $http.put('/api/watson/' + $scope.twitter)
-      .success(data => {
-        $scope.array = data;
+      .then(response => {
+        $scope.array = response.data;
 
-        $scope.moodHue = moodService.determineMoodHue(data);
-      })
-      .error(err => {
+        $scope.moodHue = moodService.determineMoodHue(response.data);
+
+        return $http({
+          'method': 'POST',
+          'url': '/api/watson/setMoodLight',
+          'data': $scope.moodHue
+        });
+      }, err => {
         console.log(err);
       });
   };
