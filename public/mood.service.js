@@ -50,11 +50,13 @@ angular.module('mood.service', [
     return moodHue;
   }
 
-  const findExtraversion = R.find(R.propEq('id', 'Extraversion'));
-  const findNeuroticism = R.find(R.propEq('id', 'Neuroticism'));
-  const findAgreeableness = R.find(R.propEq('id', 'Agreeableness'));
-  const findOpenness = R.find(R.propEq('id', 'Openness to change'));
-  const findConscientiousness = R.find(R.propEq('id', 'Conscientiousness'));
+  const traitIs = R.propEq('id');
+
+  const findExtraversion = R.find(traitIs('Extraversion'));
+  const findNeuroticism = R.find(traitIs('Neuroticism'));
+  const findAgreeableness = R.find(traitIs('Agreeableness'));
+  const findOpenness = R.find(traitIs('Openness to change'));
+  const findConscientiousness = R.find(traitIs('Conscientiousness'));
 
   const getPercentage = R.prop('percentage');
   const getModifier = R.multiply(255);
