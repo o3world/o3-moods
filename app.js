@@ -6,6 +6,7 @@ const logger = require('morgan');
 const bodyParser = require('body-parser');
 const Twitter = require('twitter');
 const watson = require('watson-developer-cloud');
+const HueApi = require('node-hue-api').HueApi;
 
 const routes = require('./routes/index');
 const users = require('./routes/users');
@@ -35,6 +36,9 @@ const personalityInsightsClient = watson.personality_insights({
   version: 'v2'
 });
 app.set('personalityInsightsClient', personalityInsightsClient);
+
+const hueApiClient = new HueApi(process.env.O3_MOODS_HUE_HOSTNAME, process.env.O3_MOODS_HUE_USERNAME);
+app.set('hueApiClient', hueApiClient);
 
 app.use('/', routes);
 app.use('/users', users);
