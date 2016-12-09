@@ -62,25 +62,28 @@ router.put('/:twitteruser', function(req, res) {
 
 
 router.post('/setMoodLight', function(req, res) {
+  // Check for RGB values in req body
+  if (!req.body.red) {
+    return res.status(400).send({'error': 'Missing red value.'});
+  }
+  if (!req.body.green) {
+    return res.status(400).send({'error': 'Missing green value.'});
+  }
+  if (!req.body.blue) {
+    return res.status(400).send({'error': 'Missing blue value.'});
+  }
+
   let hueApi = req.app.get('hueApiClient');
-  let displayResult = function(result) {
-    console.log(JSON.stringify(result, null, 2));
-  };
 
-  console.log(req.body);
-
+  // Instantiate new lightState
   let state = lightState.create();
 
-  hueApi.setLightState(1, state.rgb(req.body.red, req.body.green, req.body.blue))
-    .then(displayResult)
-    .done();
-  hueApi.setLightState(2, state.rgb(req.body.red, req.body.green, req.body.blue))
-    .then(displayResult)
-    .done();
-  hueApi.setLightState(3, state.rgb(req.body.red, req.body.green, req.body.blue))
-    .then(displayResult)
-    .done();
-  return res.status(200);
+  // Set light colors for each light
+  let lightStatePromises = [];
+  for (let i = 1; i < 5; i++) {
+    hueApi.setLightState(i, state.rgb(req.body.red, req.body.green, req.body.blue));
+  }
+  q.all(lightStatePromises);
 });
 
 module.exports = router;

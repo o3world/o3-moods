@@ -21,6 +21,7 @@
     "morgan": "^1.6.1",
     "node-hue-api": "^2.3.0",
     "pug": "^2.0.0-beta6",
+    "q": "^1.4.1",
     "twitter": "^1.4.0",
     "watson-developer-cloud": "^2.3.2",
     "webpack": "^1.13.3"
