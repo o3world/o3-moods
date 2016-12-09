@@ -13,6 +13,11 @@ router.put('/:twitteruser', function(req, res) {
       const params = { screen_name: username, count: 5000 };
       twitterClient.get('statuses/user_timeline', params, function(error, tweets) {
         if (!error) {
+          if (!tweets) {
+            console.log('No tweets found for user with handle: ' + req.params.twitteruser);
+            return res.status(404).end();
+          }
+
           let test;
           for (let i = 0; i < tweets.length; i++) {
             console.log(tweets[i].text);
