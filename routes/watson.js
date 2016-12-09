@@ -2,6 +2,8 @@
 
 const express = require('express');
 const router = express.Router();
+const lightState = require('node-hue-api').lightState;
+const q = require('q');
 
 router.put('/:twitteruser', function(req, res) {
   const twitterClient = req.app.get('twitterClient');
