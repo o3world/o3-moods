@@ -1,3 +1,3 @@
-# O3 Barista
+# O3 Moods
 
-Internal Documentation - [Paper Doc](https://paper.dropbox.com/doc/Coffee-Personality-hZmAqe12GPBCMqVxgk94M)
+Internal Documentation - [Paper Doc](https://paper.dropbox.com/doc/O3-Moods-DRVStPeyTYBBKuQvAo6nQ)
