@@ -40,20 +40,30 @@ router.put('/:twitteruser', function(req, res) {
         if (err) {
           console.log('error:', err);
         } else {
-          const array = [];
-          const i = response.tree.children;
-          i.forEach(function(thing) {
-            thing.children.forEach(function(thing2) {
-              const obj = { id: thing2.id, percentage: thing2.percentage };
-              array.push(obj);
-              thing2.children.forEach(function(thing4) {
-                const obj = { id: thing4.id, percentage: thing4.percentage };
-                array.push(obj);
+
+          const resultArray = [];
+
+          // There are only 3 child objects as the value of the tree property for now.
+          // These serve as the aspects which will lead to an insight.
+          // Personality, Needs, Values are the 3 aspects
+          // This may change in the future.
+          const aspects = response.tree.children;
+
+          aspects.forEach(aspect => {
+            aspect.children.forEach(trait => {
+              // loop for traits of personality aspects
+              const traitObject = { id: trait.id, percentage: trait.percentage };
+              resultArray.push(traitObject);
+
+              // loop for traits of traits of personality aspects
+              trait.children.forEach(subTrait => {
+                const subTraitObject = { id: subTrait.id, percentage: subTrait.percentage };
+                resultArray.push(subTraitObject);
               });
             });
           });
-          console.log(array);
-          return res.json(array);
+
+          return res.json(resultArray);
         }
       });
     })
