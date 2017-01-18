@@ -2,6 +2,11 @@
 
 const express = require('express');
 const router = express.Router();
+
+const Personality = require('../models/personality');
+
+const personalityInsightsApiVersion = 'v2';
+
 const lightState = require('node-hue-api').lightState;
 const q = require('q');
 
@@ -40,6 +45,9 @@ router.put('/:twitteruser', function(req, res) {
         if (err) {
           console.log('error:', err);
         } else {
+
+          savePersonalityResponse(username, response);
+
           const array = [];
           const i = response.tree.children;
           i.forEach(function(thing) {
@@ -62,6 +70,19 @@ router.put('/:twitteruser', function(req, res) {
     });
 });
 
+function savePersonalityResponse(username, response) {
+  const personality = new Personality({
+    twitter_handle: username,
+    raw_response: response,
+    api_version: personalityInsightsApiVersion
+  });
+
+  personality.save(err => {
+    if (err) {
+      console.log(err);
+    }
+  });
+}
 
 router.post('/setMoodLight', function(req, res) {
   // Check for RGB values in req body
