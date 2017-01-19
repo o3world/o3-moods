@@ -48,7 +48,8 @@ app.use('/api/watson', watsonRoutes);
 const mongodbUri = process.env.MONGODB_URI;
 mongoose.connect(mongodbUri, err => {
   if (err) {
-    console.log('Error connecting to ' + mongodbUri + '. ' + err);
+    console.error('Error connecting to ' + mongodbUri + '.');
+    console.error(err);
   } else {
     console.log('Connected to ' + mongodbUri);
   }
