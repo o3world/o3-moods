@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const personalitySchema = mongoose.Schema({
   twitter_handle: String,
   raw_response: Object,
-  api_version: String
+  api_version: String,
 }, {
   timestamps: {
     createdAt: 'created at',
