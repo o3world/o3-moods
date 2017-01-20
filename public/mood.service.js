@@ -68,6 +68,11 @@ angular.module('mood.service', [
   const getConscientiousnessPercentage = R.pipe(findConscientiousness, getPercentage);
 
   return {
+    getNeuroticismPercentage,
+    getOpennessPercentage,
+    getAgreeablenessPercentage,
+    getConscientiousnessPercentage,
+    getExtraversionPercentage,
     determineMoodHue
   };
 }]);
