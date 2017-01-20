@@ -12,9 +12,6 @@ angular.module('mood.controller', [])
 
         $scope.moodHue = moodService.determineMoodHue(response.data);
 
-        $scope.moodLightReqBody = $scope.moodHue;
-        $scope.moodLightReqBody.twitter_handle = $scope.twitter;
-
         $scope.conscientiousness = moodService.getConscientiousnessPercentage($scope.array);
         $scope.openness = moodService.getOpennessPercentage($scope.array);
         $scope.agreeableness = moodService.getAgreeablenessPercentage($scope.array);
@@ -24,7 +21,7 @@ angular.module('mood.controller', [])
         return $http({
           'method': 'POST',
           'url': '/api/watson/setMoodLight',
-          'data': $scope.moodLightReqBody
+          'data': $scope.moodHue
         });
       }, err => {
         console.log(err);
