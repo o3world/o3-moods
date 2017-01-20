@@ -28,8 +28,8 @@
     <div class="mood-swatch" style="background: rgb({{moodHue.red}}, {{moodHue.green}}, {{moodHue.blue}})"></div>
 
     <h3>Other Traits</h3>
-    <p ng-repeat="stuff in array" ng-cloak>
-      {{stuff.id}}: {{stuff.percentage*100 | number:0}}%
+    <p ng-repeat="trait in personalityData" ng-cloak>
+      {{trait.id}}: {{trait.percentage*100 | number:0}}%
     </p>
   </div>
 </div>

@@ -2,8 +2,16 @@
 
 const express = require('express');
 const router = express.Router();
+
+const Personality = require('../models/personality');
+const Color = require('../models/color');
+
+const personalityInsightsApiVersion = 'v2';
+
 const lightState = require('node-hue-api').lightState;
 const q = require('q');
+
+var username
 
 router.put('/:twitteruser', function(req, res) {
   const twitterClient = req.app.get('twitterClient');
@@ -41,6 +49,8 @@ router.put('/:twitteruser', function(req, res) {
           console.log('error:', err);
         } else {
 
+          savePersonalityResponse(username, response);
+
           const resultArray = [];
 
           // There are only 3 child objects as the value of the tree property for now.
@@ -72,6 +82,32 @@ router.put('/:twitteruser', function(req, res) {
     });
 });
 
+function savePersonalityResponse(username, response) {
+  const personality = new Personality({
+    twitter_handle: username,
+    raw_response: response,
+    api_version: personalityInsightsApiVersion,
+  });
+
+  personality.save(err => {
+    if (err) {
+      console.log(err);
+    }
+  });
+}
+
+function saveColorResponse(username, rgb) {
+  const moodColor = new Color({
+    twitter_handle: username,
+    color: rgb,
+  });
+
+  moodColor.save(err => {
+    if (err) {
+      console.log(err);
+    }
+  });
+}
 
 router.post('/setMoodLight', function(req, res) {
   // Check for RGB values in req body
@@ -95,6 +131,12 @@ router.post('/setMoodLight', function(req, res) {
   for (let i = 1; i < 5; i++) {
     hueApi.setLightState(i, state.rgb(req.body.red, req.body.green, req.body.blue));
   }
+
+  const username = req.body.twitter_handle;
+  const rgb = "rgb(" + req.body.red + ", " + req.body.green + ", " + req.body.blue + ")";
+
+  saveColorResponse(username, rgb);
+
   q.all(lightStatePromises);
 });
 
