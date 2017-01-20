@@ -4,6 +4,7 @@ const express = require('express');
 const path = require('path');
 const logger = require('morgan');
 const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
 const Twitter = require('twitter');
 const watson = require('watson-developer-cloud');
 const HueApi = require('node-hue-api').HueApi;
@@ -43,6 +44,16 @@ app.set('hueApiClient', hueApiClient);
 app.use('/', routes);
 app.use('/users', users);
 app.use('/api/watson', watsonRoutes);
+
+const mongodbUri = process.env.MONGODB_URI;
+mongoose.connect(mongodbUri, err => {
+  if (err) {
+    console.error('Error connecting to ' + mongodbUri + '.');
+    console.error(err);
+  } else {
+    console.log('Connected to ' + mongodbUri);
+  }
+});
 
 // error handlers
 
