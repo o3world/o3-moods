@@ -15,12 +15,21 @@
   <p></p>
 
   <div ng-if="moodHue" ng-cloak>
-    Your mood is:
+
+    <div class="explanation-container">
+      <p>Your level of neuroticism is at <span class="color-key background--red">{{neuroticism | number:2 | decimalToPercent}}.</span></p>
+      <p>Your level of openness is at <span class="color-key background--green">{{openness | number:2 | decimalToPercent}}.</span></p>
+      <p>Your level of agreeableness is at <span class="color-key background--green">{{agreeableness | number:2 | decimalToPercent}}.</span></p>
+      <p>Your level of conscientiousness is at <span class="color-key background--blue">{{conscientiousness | number:2 | decimalToPercent}}.</span></p>
+      <p>Your level of extraversion is at <span class="color-key background--purple">{{extraversion | number:2 | decimalToPercent}}.</span></p>
+    </div>
+
+    Based on these factors, your mood is:
     <div class="mood-swatch" style="background: rgb({{moodHue.red}}, {{moodHue.green}}, {{moodHue.blue}})"></div>
 
     <h3>Other Traits</h3>
-    <p ng-repeat="stuff in array" ng-cloak>
-      {{stuff.id}}: {{stuff.percentage*100 | number:0}}%
+    <p ng-repeat="trait in personalityData" ng-cloak>
+      {{trait.id}}: {{trait.percentage*100 | number:0}}%
     </p>
   </div>
 </div>

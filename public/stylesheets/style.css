@@ -129,6 +129,29 @@ input[type='text'], textarea {
   display: none !important;
 }
 
+.explanation-container {
+  margin: 25px 0;
+}
+
+.explanation-container > p {
+  padding: 10px 0;
+}
+
+.color-key {
+  width: 30px;
+  height: 30px;
+  margin: 0 5px;
+  padding: 5px;
+  border-radius: 5px;
+  box-shadow: 5px 5px 15px #000;
+  color: #ffffff;
+}
+
+.background--red { background-color: #ff0000; }
+.background--green { background-color: #008000; }
+.background--blue { background-color: #0000ff; }
+.background--purple { background: #551a8b; }
+
 @media (min-width: 480px) {
   body {
     font-size: 16px;
