@@ -55,8 +55,6 @@ input[type='text'], textarea {
 
 .logo {
   display: block;
-  height: 100px;
-  width: 100px;
   margin: 0 auto;
 }
 
@@ -136,7 +134,9 @@ input[type='text'], textarea {
 }
 
 .explanation-container > p {
+  margin: 0;
   padding: 10px 0;
+  line-height: 30px;
 }
 
 .color-key {
