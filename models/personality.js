@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 
 const personalitySchema = mongoose.Schema({
   twitter_handle: String,
+  color: String
   raw_response: Object,
   api_version: String,
 }, {
