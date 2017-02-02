@@ -11,8 +11,6 @@ const personalityInsightsApiVersion = 'v2';
 const lightState = require('node-hue-api').lightState;
 const q = require('q');
 
-var username
-
 router.put('/:twitteruser', function(req, res) {
   const twitterClient = req.app.get('twitterClient');
   const personalityInsightsClient = req.app.get('personalityInsightsClient');
@@ -122,14 +120,15 @@ router.post('/setMoodLight', function(req, res) {
   }
 
   let hueApi = req.app.get('hueApiClient');
+  let numberOfLights = req.app.get('numberOfLights');
 
   // Instantiate new lightState
   let state = lightState.create();
 
   // Set light colors for each light
   let lightStatePromises = [];
-  for (let i = 1; i < 5; i++) {
-    hueApi.setLightState(i, state.rgb(req.body.red, req.body.green, req.body.blue));
+  for (let i = 1; i < (numberOfLights + 1); i++) {
+    lightStatePromises.push(hueApi.setLightState(i, state.rgb(req.body.red, req.body.green, req.body.blue)));
   }
 
   const username = req.body.twitter_handle;
@@ -137,7 +136,9 @@ router.post('/setMoodLight', function(req, res) {
 
   saveColorResponse(username, rgb);
 
-  q.all(lightStatePromises);
+  return q.all(lightStatePromises).done(function(values){
+    return res.status(200).end();
+  });
 });
 
 module.exports = router;

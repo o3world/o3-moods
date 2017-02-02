@@ -46,6 +46,8 @@ npm install
 
 Set up your Watson Personality Insights, Twitter API and Meet Hue Developer API credentials as environment variables in your `.env` file. You can use the included `.env.example` file as a base. See further below for more details on the Watson Personality Insights, Twitter API and Meet Hue Developer API. For the Phillips Meet Hue Developer API, you will also need a public IP address set as an environment variable.
 
+Also, you will need to specify the number of Phillips Hue Light Bulbs you are using in the `.env` file.
+
 Start the Express server.
 
 ```
