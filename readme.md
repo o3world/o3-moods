@@ -7,7 +7,7 @@ O3 Moods is a Node.js Express web application that uses the [IBM Watson Personal
 
 ## Live Demo
 
-https://o3-moods.herokuapp.com/
+http://moods.o3labs.com/
 
 ## O3 Moods is a O3 Labs project. More information about O3 Labs is available here:
 
