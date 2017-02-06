@@ -4,12 +4,13 @@ const express = require('express');
 const router = express.Router();
 
 const Personality = require('../models/personality');
-const Color = require('../models/color');
 
 const personalityInsightsApiVersion = 'v2';
 
 const lightState = require('node-hue-api').lightState;
 const q = require('q');
+
+let watsonResponse;
 
 router.put('/:twitteruser', function(req, res) {
   const twitterClient = req.app.get('twitterClient');
@@ -47,7 +48,7 @@ router.put('/:twitteruser', function(req, res) {
           console.log('error:', err);
         } else {
 
-          savePersonalityResponse(username, response);
+          watsonResponse = response;
 
           const resultArray = [];
 
@@ -80,27 +81,15 @@ router.put('/:twitteruser', function(req, res) {
     });
 });
 
-function savePersonalityResponse(username, response) {
+function savePersonalityResponse(username, rgb, response) {
   const personality = new Personality({
     twitter_handle: username,
+    color: rgb,
     raw_response: response,
     api_version: personalityInsightsApiVersion,
   });
 
   personality.save(err => {
-    if (err) {
-      console.log(err);
-    }
-  });
-}
-
-function saveColorResponse(username, rgb) {
-  const moodColor = new Color({
-    twitter_handle: username,
-    color: rgb,
-  });
-
-  moodColor.save(err => {
     if (err) {
       console.log(err);
     }
@@ -133,8 +122,9 @@ router.post('/setMoodLight', function(req, res) {
 
   const username = req.body.twitter_handle;
   const rgb = "rgb(" + req.body.red + ", " + req.body.green + ", " + req.body.blue + ")";
+  const response = watsonResponse;
 
-  saveColorResponse(username, rgb);
+  savePersonalityResponse(username, rgb, response);
 
   return q.all(lightStatePromises).done(function(values){
     return res.status(200).end();
