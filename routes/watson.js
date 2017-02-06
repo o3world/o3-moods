@@ -4,7 +4,6 @@ const express = require('express');
 const router = express.Router();
 
 const Personality = require('../models/personality');
-const Color = require('../models/color');
 
 const personalityInsightsApiVersion = 'v2';
 
@@ -123,9 +122,9 @@ router.post('/setMoodLight', function(req, res) {
 
   const username = req.body.twitter_handle;
   const rgb = "rgb(" + req.body.red + ", " + req.body.green + ", " + req.body.blue + ")";
-  const rawResponse = watsonResponse;
+  const response = watsonResponse;
 
-  savePersonalityResponse(username, rgb, rawResponse);
+  savePersonalityResponse(username, rgb, response);
 
   return q.all(lightStatePromises).done(function(values){
     return res.status(200).end();
