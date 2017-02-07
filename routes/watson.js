@@ -22,10 +22,10 @@ router.put('/:twitteruser', function(req, res) {
       const params = { screen_name: username, count: 5000 };
       twitterClient.get('statuses/user_timeline', params, function(error, tweets) {
         if(error) {
-          console.log("Invalid Twitter handle." + error);
+          console.log("Invalid Twitter handle.", error);
           return res.status(404).end();
         }
-        
+
         if (!error) {
           if (!tweets) {
             console.log('No tweets found for user with handle: ' + req.params.twitteruser);
