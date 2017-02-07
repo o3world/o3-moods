@@ -41,6 +41,9 @@ app.set('personalityInsightsClient', personalityInsightsClient);
 const hueApiClient = new HueApi(process.env.O3_MOODS_HUE_HOSTNAME, process.env.O3_MOODS_HUE_USERNAME);
 app.set('hueApiClient', hueApiClient);
 
+const numberOfLights = process.env.O3_MOODS_NUMBER_OF_LIGHTS;
+app.set('numberOfLights', numberOfLights);
+
 app.use('/', routes);
 app.use('/users', users);
 app.use('/api/watson', watsonRoutes);

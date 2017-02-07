@@ -21,6 +21,11 @@ router.put('/:twitteruser', function(req, res) {
     return new Promise(function(resolve) {
       const params = { screen_name: username, count: 5000 };
       twitterClient.get('statuses/user_timeline', params, function(error, tweets) {
+        if(error) {
+          console.log("Invalid Twitter handle.", error);
+          return res.status(404).end();
+        }
+
         if (!error) {
           if (!tweets) {
             console.log('No tweets found for user with handle: ' + req.params.twitteruser);
@@ -109,14 +114,15 @@ router.post('/setMoodLight', function(req, res) {
   }
 
   let hueApi = req.app.get('hueApiClient');
+  let numberOfLights = req.app.get('numberOfLights');
 
   // Instantiate new lightState
   let state = lightState.create();
 
   // Set light colors for each light
   let lightStatePromises = [];
-  for (let i = 1; i < 5; i++) {
-    hueApi.setLightState(i, state.rgb(req.body.red, req.body.green, req.body.blue));
+  for (let i = 1; i < (numberOfLights + 1); i++) {
+    lightStatePromises.push(hueApi.setLightState(i, state.rgb(req.body.red, req.body.green, req.body.blue)));
   }
 
   const username = req.body.twitter_handle;
@@ -125,7 +131,14 @@ router.post('/setMoodLight', function(req, res) {
 
   savePersonalityResponse(username, rgb, response);
 
-  q.all(lightStatePromises);
+  return q.all(lightStatePromises)
+    .catch(function (error) {
+      console.log(error);
+      return res.status(500).end();
+    })
+    .done(function(values){
+      return res.status(200).end();
+    });
 });
 
 module.exports = router;
