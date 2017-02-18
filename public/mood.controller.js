@@ -21,6 +21,8 @@ angular.module('mood.controller', [])
         $scope.neuroticism = moodService.getNeuroticismPercentage($scope.personalityData);
         $scope.extraversion = moodService.getExtraversionPercentage($scope.personalityData);
 
+        twitterHandleSubmit();
+
         return $http({
           'method': 'POST',
           'url': '/api/watson/setMoodLight',
@@ -30,4 +32,8 @@ angular.module('mood.controller', [])
         console.log(err);
       });
   };
+
+  function twitterHandleSubmit() {
+    $scope.twitterHandleSubmitted = true;
+  }
 }]);

@@ -29,7 +29,12 @@
   },
   "devDependencies": {
     "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.1",
     "gulp-jshint": "^2.0.1",
+    "gulp-minify-css": "^1.2.4",
+    "gulp-notify": "^3.0.0",
+    "gulp-plumber": "^1.1.0",
+    "gulp-sass": "^3.1.0",
     "jshint": "^2.9.3",
     "jshint-stylish": "^2.2.1"
   }

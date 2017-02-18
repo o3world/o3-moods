@@ -3,39 +3,111 @@
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
+<header>
+  <img src="/images/o3Logo@3x.png">
+</header>
+
 <div ng-app="app" ng-controller="MoodController">
 
-  <div class="logo" ng-include="'svg/o3-labsbot-moods.svg'"></div>
+  <div class="container" ng-hide="twitterHandleSubmitted">
+    <div class="logo" ng-include="'svg/o3-labsbot-moods.svg'"></div>
 
-  <h1>O<sub>3</sub> Moods</h1>
-
-  <form id="twitterInput" ng-submit="getData()">
-    <input type="text"
-        id="twitterName"
-        class="form-control form-control-vertical"
-        name="twitterHandle"
-        placeholder="Twitter Handle"
-        ng-model="twitter">
-    <input class="btn" type="submit" value="Submit">
-  </form>
-  <p></p>
+    <h1>O<sub>3</sub> Moods</h1>
+    <div class="underline"></div>
+    <div class="app-descripton">
+      <p>Using technology and social media to set the mood.</p>
+    </div>
+    <div class="section submission">
+        <form id="twitterInput" ng-submit="getData()">
+          <input type="text"
+              id="twitterName"
+              class="form-control form-control-vertical"
+              name="twitterHandle"
+              placeholder="Twitter Handle"
+              ng-model="twitter">
+          <input class="btn" type="submit" value="Submit">
+        </form>
+    </div>
+  </div>
 
   <div ng-if="moodHue" ng-cloak>
+    <div class="container">
+      <div class="section trait-results">
+        <div class="app-descripton">
+          <p>Your Mood Results.</p>
+        </div>
+        <div class="underline"></div>
 
-    <div class="explanation-container">
-      <p>Your level of neuroticism is at <span class="color-key background--red">{{neuroticism | number:2 | decimalToPercent}}.</span></p>
-      <p>Your level of openness is at <span class="color-key background--green">{{openness | number:2 | decimalToPercent}}.</span></p>
-      <p>Your level of agreeableness is at <span class="color-key background--green">{{agreeableness | number:2 | decimalToPercent}}.</span></p>
-      <p>Your level of conscientiousness is at <span class="color-key background--blue">{{conscientiousness | number:2 | decimalToPercent}}.</span></p>
-      <p>Your level of extraversion is at <span class="color-key background--purple">{{extraversion | number:2 | decimalToPercent}}.</span></p>
+        <div class="logo" ng-include="'svg/o3-labsbot-moods.svg'"></div>
+        <div class="trait-container">
+            <div class="trait-percent" style="background: rgb({{moodHue.red}}, {{moodHue.green}}, {{moodHue.blue}})"></div>
+            <div class="trait-description">
+              <h2 style="color: rgb({{moodHue.red}}, {{moodHue.green}}, {{moodHue.blue}})">Color</h2>
+              <p>Individuals who score high tend to enjoy interacting with people, be enthusiastic, action-oriented…</p>
+            </div>
+        </div>
+      </div>
+
+      <div class="section trait-results">
+        <div class="app-descripton">
+          <p>Your Twitter Personality Score</p>
+        </div>
+        <div class="underline"></div>
+
+        <div class="trait-container">
+            <div class="trait-percent neuroticism">{{neuroticism | number:2 | decimalToPercent}}</div>
+            <div class="trait-description">
+              <h2 class="neuroticism--font">Neuroticism</h2>
+              <p>Individuals who score high tend to enjoy interacting with people, be enthusiastic, action-oriented…</p>
+            </div>
+        </div>
+        <div class="trait-container">
+            <div class="trait-percent open-agree">{{openness | number:2 | decimalToPercent}}</div>
+            <div class="trait-description">
+              <h2 class="open-agree--font">Openness</h2>
+              <p>Individuals who score high tend to enjoy interacting with people, be enthusiastic, action-oriented…</p>
+            </div>
+        </div>
+        <div class="trait-container">
+            <div class="trait-percent open-agree">{{agreeableness | number:2 | decimalToPercent}}</div>
+            <div class="trait-description">
+              <h2 class="open-agree--font">Agreeableness</h2>
+              <p>Individuals who score high tend to enjoy interacting with people, be enthusiastic, action-oriented…</p>
+            </div>
+        </div>
+        <div class="trait-container">
+            <div class="trait-percent conscientiousness">{{conscientiousness | number:2 | decimalToPercent}}</div>
+            <div class="trait-description">
+              <h2 class="conscientiousness--font">Conscientiousness</h2>
+              <p>Individuals who score high tend to enjoy interacting with people, be enthusiastic, action-oriented…</p>
+            </div>
+        </div>
+        <div class="trait-container">
+            <div class="trait-percent extraversion">{{extraversion | number:2 | decimalToPercent}}</div>
+            <div class="trait-description">
+              <h2 class="extraversion--font">Extraversion</h2>
+              <p>Individuals who score high tend to enjoy interacting with people, be enthusiastic, action-oriented…</p>
+            </div>
+        </div>
+      </div>
     </div>
 
-    Based on these factors, your mood is:
-    <div class="mood-swatch" style="background: rgb({{moodHue.red}}, {{moodHue.green}}, {{moodHue.blue}})"></div>
+    <footer>
+      <div class="footer-container">
+        <button id="twitter">
+          <div class="button-container">
+            <img src="/images/iconTwitter@3x.png">
+            SHARE ON TWITTER
+          </div>
+        </button>
+        <button id="start-over">
+          <div class="button-container">
+            <img src="/images/o3MoodsLogoSmall@3x.png">
+            START OVER
+          </div>
+        </button>
+      </div>
+    </footer>
 
-    <h3>Other Traits</h3>
-    <p ng-repeat="trait in personalityData" ng-cloak>
-      {{trait.id}}: {{trait.percentage*100 | number:0}}%
-    </p>
   </div>
 </div>

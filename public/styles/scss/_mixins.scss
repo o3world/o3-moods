@@ -1,0 +1,89 @@
+//
+// Mixins
+// --------------------------------------------------
+
+@mixin bp($point) {
+    @if ($MQs) {
+        @if $point == xtrasmall {
+            @media #{$mq-xtrasmall} { @content; }
+        }
+
+        @else if $point == small {
+            @media #{$mq-small} { @content; }
+        }
+
+        @else if $point == medium {
+            @media #{$mq-medium} { @content; }
+        }
+
+        @else if $point == large {
+            @media #{$mq-large}  { @content; }
+        }
+
+        @else if $point == retina {
+            @media #{$mq-retina}  { @content; }
+        }
+    }
+
+    @else {
+        @if $point != retina {
+            @content;
+        }
+    }
+}
+
+@mixin bp-max($point) {
+    @if $point == xtrasmall {
+        @media (max-width: ($bp-xtrasmall - 1px)) {
+            @content;
+        }
+    }
+
+    @else if $point == small {
+        @media (max-width: ($bp-small - 1px)) {
+            @content;
+        }
+    }
+
+    @else if $point == medium {
+        @media (max-width: ($bp-medium - 1px)) {
+            @content;
+        }
+    }
+
+    @else if $point == large {
+        @media (max-width: ($bp-large - 1px)) {
+            @content;
+        }
+    }
+}
+
+@mixin font-size($pixelSize: $baseFontSize) {
+    font-size: #{$pixelSize}px;
+    font-size: #{$pixelSize / $baseFontSize}rem;
+}
+
+@mixin headers() {
+    h1, h2, h3, h4, h5, h6,
+    .h1, .h2, .h3, .h4, .h5, .h6 {
+        @content
+    }
+}
+
+@mixin placeholder() {
+    ::-webkit-input-placeholder {
+        @content
+    }
+
+    :-moz-placeholder           {
+        @content
+    }
+
+    ::-moz-placeholder          {
+        @content
+    }
+
+    :-ms-input-placeholder      {
+        @content
+    }
+}
