@@ -22,30 +22,30 @@ footer {
     }
   }
 
-  .button-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    width: 60%;
-    margin: 0 20%;
-  }
-
-
-  button#twitter {
-    background-color: $twitter-blue;
-    color: $white;
-  }
-
-  button#start-over {
-    border: 1px solid $medium-dark-gray;
-    background-color: $white;
-    color: $medium-dark-gray;
-  }
-
   img {
     width: 20px;
     height: 15px;
     margin: 0 10px;
   }
 
+}
+
+.button-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  width: 60%;
+  margin: 0 20%;
+}
+
+
+button#twitter {
+  background-color: $twitter-blue;
+  color: $white;
+}
+
+button#start-over {
+  border: 1px solid $medium-dark-gray;
+  background-color: $white;
+  color: $medium-dark-gray;
 }

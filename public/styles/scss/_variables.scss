@@ -16,7 +16,7 @@
 ** Media Queries
 ********************/
 
-  $mq-xtrasmall:				"only screen and (min-width: #{$bp-xtrasmall}px)";
+  $mq-xtrasmall:	  "only screen and (min-width: #{$bp-xtrasmall}px)";
 	$mq-small:				"only screen and (min-width: #{$bp-small}px)";
 	$mq-medium:				"only screen and (min-width: #{$bp-medium}px)";
 	$mq-large:				"only screen and (min-width: #{$bp-large}px)";
@@ -27,7 +27,7 @@
 ** Fonts
 ********************/
 
-	$baseFontSize: 			20;
+	$baseFontSize: 			16px;
 	$baseLineHeight: 		1.5em;
 
 	$sans-serif: 			'Lato', Helvetica, Arial, sans-serif;
