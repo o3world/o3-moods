@@ -22,8 +22,23 @@ footer {
     text-align: left;
 
     @include bp(xtrasmall) {
-      width: 30%;
-      margin: 5px 35%;
+      width: 50%;
+      margin: 5px 25%;
+    }
+
+    @include bp(small) {
+      width: 40%;
+      margin: 5px 30%
+    }
+
+    @include bp(medium) {
+      width: 25%;
+      margin: 5px 37.5%
+    }
+
+    @include bp(large) {
+      width: 20%;
+      margin: 5px 40%
     }
   }
 
