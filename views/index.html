@@ -60,35 +60,80 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <div class="trait-percent neuroticism">{{neuroticism | number:2 | decimalToPercent}}</div>
             <div class="trait-description">
               <h2 class="neuroticism--font">Neuroticism</h2>
-              <p>Individuals who score high tend to enjoy interacting with people, be enthusiastic, action-oriented…</p>
+              <p>
+                Individuals who score high on neuroticism are more likely than average to experience such feelings as anxiety, anger, envy, guilt, and depressed mood. <span ng-hide="!readMore1">People who are neurotic respond worse to stressors, are more likely to interpret ordinary situations as threatening, and minor frustrations as hopelessly difficult. They are often self-conscious and shy, and they may have trouble controlling urges and delaying gratification.
+                <br>
+                <br>
+                Individuals who score low in neuroticism are more emotionally stable and less reactive to stress. They tend to be calm, even-tempered, and less likely to feel tense or rattled. They generally report more happiness and satisfaction with their lives.</span>
+              </p>
+              <h5 ng-click="readMore1 = !readMore1">
+                <span ng-show="!readMore1">Read More</span>
+                <span ng-hide="!readMore1">Read Less</span>
+              </h5>
             </div>
         </div>
         <div class="trait-container">
             <div class="trait-percent open-agree">{{openness | number:2 | decimalToPercent}}</div>
             <div class="trait-description">
               <h2 class="open-agree--font">Openness</h2>
-              <p>Individuals who score high tend to enjoy interacting with people, be enthusiastic, action-oriented…</p>
+              <p>
+                Individuals with a high level of openness are usually imaginative, rather than practical. <span ng-hide="!readMore2">They tend to be creative, curious, open to new and different ideas, and in touch with their feelings.
+                <br>
+                <br>
+                People who score low on openness are considered to be closed to experience. They tend to be conventional and traditional in their outlook and behavior. They prefer familiar routines to new experiences, and generally have a narrower range of interests.</span>
+              </p>
+              <h5 ng-click="readMore2 = !readMore2">
+                <span ng-show="!readMore2">Read More</span>
+                <span ng-hide="!readMore2">Read Less</span>
+              </h5>
             </div>
         </div>
         <div class="trait-container">
             <div class="trait-percent open-agree">{{agreeableness | number:2 | decimalToPercent}}</div>
             <div class="trait-description">
               <h2 class="open-agree--font">Agreeableness</h2>
-              <p>Individuals who score high tend to enjoy interacting with people, be enthusiastic, action-oriented…</p>
+              <p>
+                Individuals who score high on agreeableness value getting along with others. <span ng-hide="!readMore3">They are generally considerate, kind, generous, trusting and trustworthy, helpful, and willing to compromise their interests with others.
+                <br>
+                <br>
+                Individuals who score low place self-interest above getting along with others. They are generally unconcerned with others' well-being, and are less likely to extend themselves for other people. Sometimes their skepticism about others' motives causes them to be suspicious, unfriendly, and uncooperative.</span>
+              </p>
+              <h5 ng-click="readMore3 = !readMore3">
+                <span ng-show="!readMore3">Read More</span>
+                <span ng-hide="!readMore3">Read Less</span>
+              </h5>
             </div>
         </div>
         <div class="trait-container">
             <div class="trait-percent conscientiousness">{{conscientiousness | number:2 | decimalToPercent}}</div>
             <div class="trait-description">
               <h2 class="conscientiousness--font">Conscientiousness</h2>
-              <p>Individuals who score high tend to enjoy interacting with people, be enthusiastic, action-oriented…</p>
+              <p>
+                Individuals who score high on conscientiousness are typically efficient and organized. <span ng-hide="!readMore4">They exhibit a tendency to show self-discipline, act dutifully, and aim for achievement; they display planned rather than spontaneous behavior; and they are generally organized and dependable.
+                <br>
+                <br>
+                Individuals who score low tend to be laid back, less goal-oriented, and less driven by success; they also are more likely to engage in antisocial behavior.</span>
+              </p>
+              <h5 ng-click="readMore4 = !readMore4">
+                <span ng-show="!readMore4">Read More</span>
+                <span ng-hide="!readMore4">Read Less</span>
+              </h5>
             </div>
         </div>
         <div class="trait-container">
             <div class="trait-percent extraversion">{{extraversion | number:2 | decimalToPercent}}</div>
             <div class="trait-description">
               <h2 class="extraversion--font">Extraversion</h2>
-              <p>Individuals who score high tend to enjoy interacting with people, be enthusiastic, action-oriented…</p>
+              <p>
+                Individuals who score high on extraversion tend to enjoy human interactions and to be enthusiastic, talkative, assertive, and gregarious. <span ng-hide="!readMore5">They are energized and thrive off being around other people.
+                <br>
+                <br>
+                Individuals who score low on extraversion are typically perceived as more reserved or reflective. They are likely to enjoy time spent alone and find less reward in time spent with large groups of people, though they may enjoy interactions with close friends.</span>
+              </p>
+              <h5 ng-click="readMore5 = !readMore5">
+                <span ng-show="!readMore5">Read More</span>
+                <span ng-hide="!readMore5">Read Less</span>
+              </h5>
             </div>
         </div>
       </div>
