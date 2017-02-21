@@ -16,6 +16,7 @@
 
   h2, h3 {
     font-family: $serif;
+    color: $light-brown;
   }
 
   p {
@@ -32,11 +33,8 @@
   margin: 8px;
   padding: 17px;
   font-size: 24px;
+  background-color: $light-brown;
   color: $white;
-
-  img {
-    margin: -8px 0;
-  }
 }
 
 .trait-description {

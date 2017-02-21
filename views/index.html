@@ -4,12 +4,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
 <header>
-  <img src="/images/o3Logo@3x.png" alt="O3 World logo">
+  <img src="/svg/o3-logo.svg" alt="O3 World logo">
 </header>
 
 <div ng-app="app" ng-controller="MoodController">
 
-  <div class="container" ng-hide="twitterHandleSubmitted">
+  <div class="container" ng-show="appStart" ng-hide="twitterHandleSubmitted">
     <div class="logo" ng-include="'svg/o3-labsbot-moods.svg'"></div>
 
     <h1>O<sub>3</sub> Moods</h1>
@@ -30,7 +30,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </div>
 
-  <div ng-if="moodHue" ng-cloak>
+  <div ng-show="twitterHandleSubmitted" ng-hide="appStart" ng-cloak>
     <div class="container">
       <div class="section trait-results">
         <div class="app-descripton">
@@ -40,7 +40,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
         <div class="logo" ng-include="'svg/o3-labsbot-moods.svg'"></div>
         <div class="trait-container">
-            <div class="trait-percent" style="background: rgb({{moodHue.red}}, {{moodHue.green}}, {{moodHue.blue}})"></div>
+            <div class="trait-percent" style="background: rgb({{moodHue.red}}, {{moodHue.green}}, {{moodHue.blue}})">
+              <img src="/svg/lightbulb.svg" alt="lightbulb icon">
+            </div>
             <div class="trait-description">
               <h2 style="color: rgb({{moodHue.red}}, {{moodHue.green}}, {{moodHue.blue}})">Color</h2>
               <p>Individuals who score high tend to enjoy interacting with people, be enthusiastic, action-oriented…</p>
@@ -94,15 +96,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <footer>
       <div class="footer-container">
-        <button id="twitter">
-          <div class="button-container">
-            <img src="/images/iconTwitter@3x.png" alt="Twitter logo">
-            SHARE ON TWITTER
-          </div>
-        </button>
+        <a class="twitter-share-button" href="https://twitter.com/intent/tweet?text=I%20got%20mood%20insights%20from%20O3%20Moods!%20Check%20it%20out%20at%20http://moods.o3labs.com/" target="_blank">
+          <button id="twitter">
+            <div class="button-container">
+              <img src="/svg/twitter.svg" alt="twitter icon">
+              SHARE ON TWITTER
+            </div>
+          </button>
+        </a>
         <button id="start-over">
-          <div class="button-container">
-            <img src="/images/o3MoodsLogoSmall@3x.png" alt="O3 Moods logo">
+          <div class="button-container" ng-click="resetApp()">
+            <img src="/svg/o3-labsbot-moods-dark.svg" alt="O3 Moods logo">
             START OVER
           </div>
         </button>

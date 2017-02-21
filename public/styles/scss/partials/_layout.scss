@@ -8,6 +8,19 @@
   margin-right: auto;
   margin-left: auto;
   padding: 10px 20px 20px;
+
+  @include bp(xtrasmall) {
+    width: 60%;
+  };
+
+  @include bp(small) {
+    width: 50%;
+  }
+
+  @include bp(medium) {
+    width: 33.3333%;
+  }
+
 }
 
 .section {
@@ -30,12 +43,4 @@
 
 .row > :last-child {
   margin-right: 0;
-}
-
-@include bp(xtrasmall) {
-  .container {
-    width: 33.3333%;
-    padding-top: 60px;
-    padding-bottom: 60px;
-  }
 }

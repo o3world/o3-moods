@@ -5,6 +5,10 @@ angular.module('mood.controller', [])
 .controller('MoodController', [
 '$scope', '$http', 'moodService',
 ($scope, $http, moodService) => {
+
+  $scope.appStart = true;
+  $scope.twitterHandleSubmitted = false;
+
   $scope.getData = () => {
     $http.put('/api/watson/' + $scope.twitter)
       .then(response => {
@@ -31,6 +35,12 @@ angular.module('mood.controller', [])
       }, err => {
         console.log(err);
       });
+  };
+
+  $scope.resetApp = () => {
+    $scope.appStart = true;
+    $scope.twitterHandleSubmitted = false;
+    $scope.twitter = '';
   };
 
   function twitterHandleSubmit() {

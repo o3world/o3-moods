@@ -11,8 +11,16 @@ header {
   padding: 16px;
   background-color: $white;
 
-  img {
+
+  .o3-logo {
     width: 40px;
     height: 40px;
+    background-image: url('/images/o3Logo.png');
+    background-repeat: no-repeat;
+    background-size: 40px;
+
+    @include bp(retina) {
+
+    }
   }
 }
