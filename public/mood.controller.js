@@ -67,7 +67,7 @@ angular.module('mood.controller', [])
       $scope.colorResult = 'RED';
       $scope.colorDescription = 'Generally associated with emotional state of passion. Shows excitement, energy and adventure. At one end of deep red, it shows arousal, passion and love. Bright red shows anger, feelings of adventure, excitement or terror. Orange is a dare devilish feeling, stress and confusion. Dark orange is worry, aggression or tensed.';
 
-      if ($scope.moodHue.red >= 190 && $scope.moodHue.green <= 192 && $scope.moodHue.blue >= 75 && $scope.moodHue.blue <= 160) {
+      if ($scope.moodHue.red >= 190 && $scope.moodHue.green <= 192 && $scope.moodHue.blue >= 65 && $scope.moodHue.blue <= 160) {
         $scope.colorResult = 'PINK';
         $scope.colorDescription = 'Pink shows calm and relaxed feeling where bright pink shows affection, love and happiness.';
       } else if ($scope.moodHue.green >= 25 && $scope.moodHue.green <= 192 && $scope.moodHue.blue <= 145) {
