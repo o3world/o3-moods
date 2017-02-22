@@ -67,16 +67,22 @@ angular.module('mood.controller', [])
       $scope.colorResult = 'RED';
       $scope.colorDescription = 'Generally associated with emotional state of passion. Shows excitement, energy and adventure. At one end of deep red, it shows arousal, passion and love. Bright red shows anger, feelings of adventure, excitement or terror. Orange is a dare devilish feeling, stress and confusion. Dark orange is worry, aggression or tensed.';
 
-      if ($scope.moodHue.red >= 190 && $scope.moodHue.green <= 192 && $scope.moodHue.blue >= 65 && $scope.moodHue.blue <= 160) {
+      if ($scope.moodHue.red >= 190 && $scope.moodHue.green <= 192 && $scope.moodHue.blue >= 65 && $scope.moodHue.blue <= 165) {
         $scope.colorResult = 'PINK';
         $scope.colorDescription = 'Pink shows calm and relaxed feeling where bright pink shows affection, love and happiness.';
       } else if ($scope.moodHue.green >= 25 && $scope.moodHue.green <= 192 && $scope.moodHue.blue <= 145) {
         $scope.colorResult = 'BROWN';
         $scope.colorDescription = 'Brown generally means the person is feeling jittery and the mind is wandering.';
       }
+
     } else if ($scope.moodHue.red <= 178 && $scope.moodHue.green >= 90 && $scope.moodHue.blue <= 178) {
       $scope.colorResult = 'GREEN';
       $scope.colorDescription = 'Green generally reflects calm, peaceful, relaxed, energetic and wandering and mixed emotions.';
+
+      if ($scope.moodHue.red >= 140 && $scope.moodHue.green <= 185 && $scope.moodHue.blue <= 145) {
+        $scope.colorResult = 'BROWN';
+        $scope.colorDescription = 'Brown generally means the person is feeling jittery and the mind is wandering.';
+      }
 
     } else if ($scope.moodHue.red <= 204 && $scope.moodHue.green <= 204 && $scope.moodHue.blue >= 90) {
       $scope.colorResult = 'BLUE';
@@ -86,9 +92,6 @@ angular.module('mood.controller', [])
         $scope.colorResult = 'PURPLE';
         $scope.colorDescription = 'Purple reflects tranquil, satisfied, balanced inside, passionate, sensual and romantic. Reddish purple indicates anger, moody or desperate.';
       }
-    } else if ($scope.moodHue.red >= 90 && $scope.moodHue.green >= 25 && $scope.moodHue.green <= 192 && $scope.moodHue.blue <= 145) {
-      $scope.colorResult = 'BROWN';
-      $scope.colorDescription = 'Brown generally means the person is feeling jittery and the mind is wandering.';
     }
   }
 }]);
