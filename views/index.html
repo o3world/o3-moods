@@ -8,7 +8,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </header>
 
 <div ng-app="app" ng-controller="MoodController">
-
+  <div class="loading" ng-hide="!loadState"><img src="svg/loading.svg"></div>
   <div class="container" ng-show="appStart || !twitterHandleSubmitted">
     <div class="logo" ng-include="'svg/o3-labsbot-moods.svg'"></div>
 
@@ -25,7 +25,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               name="twitterHandle"
               placeholder="Twitter Handle"
               ng-model="twitter">
-          <input class="btn" type="submit" value="Submit">
+          <input class="btn" type="submit" value="Submit" ng-click="loading()">
         </form>
     </div>
   </div>
