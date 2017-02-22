@@ -6,21 +6,14 @@ header {
   display: flex;
   flex-direction: row;
   justify-content: center;
+  margin: 0;
   width: 100%;
   height: 75px;
   padding: 16px;
   background-color: $white;
 
-
-  .o3-logo {
+  img {
     width: 40px;
     height: 40px;
-    background-image: url('/images/o3Logo.png');
-    background-repeat: no-repeat;
-    background-size: 40px;
-
-    @include bp(retina) {
-
-    }
   }
 }
