@@ -9,7 +9,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <div ng-app="app" ng-controller="MoodController">
 
-  <div class="container" ng-show="appStart" ng-hide="twitterHandleSubmitted">
+  <div class="container" ng-show="appStart || !twitterHandleSubmitted">
     <div class="logo" ng-include="'svg/o3-labsbot-moods.svg'"></div>
 
     <h1>O<sub>3</sub> Moods</h1>
@@ -30,7 +30,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </div>
 
-  <div ng-show="twitterHandleSubmitted" ng-hide="appStart" ng-cloak>
+  <div ng-show="twitterHandleSubmitted || !appStart" ng-cloak>
     <div class="container">
       <div class="section trait-results">
         <div class="app-descripton">

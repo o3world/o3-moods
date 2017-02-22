@@ -16,7 +16,7 @@
 ** Media Queries
 ********************/
 
-  $mq-xtrasmall:	  "only screen and (min-width: #{$bp-xtrasmall}px)";
+  $mq-xtrasmall:				"only screen and (min-width: #{$bp-xtrasmall}px)";
 	$mq-small:				"only screen and (min-width: #{$bp-small}px)";
 	$mq-medium:				"only screen and (min-width: #{$bp-medium}px)";
 	$mq-large:				"only screen and (min-width: #{$bp-large}px)";
@@ -27,7 +27,7 @@
 ** Fonts
 ********************/
 
-	$baseFontSize: 			16px;
+	$baseFontSize: 			20;
 	$baseLineHeight: 		1.5em;
 
 	$sans-serif: 			'Lato', Helvetica, Arial, sans-serif;
@@ -57,12 +57,5 @@
   $mood-green: #28C336;
   $mood-blue: #288BC3;
   $mood-purple: #5A2EC3;
-
-  $form-background: #f9f9f9;
-  $form-border: #dbdfe2;
-  $form-text: #161515;
-
-  $btn-background: #ca0000;
-  $btn-background-hover: #e00000;
 
   $twitter-blue: #1DA1F2;

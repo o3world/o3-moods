@@ -22,6 +22,10 @@ body {
   background-repeat: repeat;
   background-attachment: fixed;
   height: 100%;
+
+  @include bp(xtrasmall) {
+    font-size: 1em;
+  }
 }
 
 h1, h2, h3 {
@@ -46,6 +50,12 @@ h3 {
 
 .logo {
   margin: 0 auto;
+
+  @include bp(xtrasmall) {
+    height: 150px;
+    width: 150px;
+    margin: 0 auto;
+  }
 }
 
 .underline {
@@ -59,13 +69,13 @@ h3 {
   display: block;
   width: 100%;
   padding: 10px 10px;
-  color: #161515;
+  color: $form-text;
   font-size: 1em;
   line-height: 1.5;
-  background-color: #f9f9f9;
+  background-color: $form-background;
   font-family: Lato, Helvetica, Arial, sans-serif;
   border-radius: 0;
-  border: 2px solid #dbdfe2;
+  border: 2px solid $form-border;
 }
 
 .form-control-vertical {
@@ -80,9 +90,9 @@ button,
 .btn {
   display: inline-block;
   width: 100%;
-  background-color: #ca0000;
+  background-color: $btn-background;
   background-image: none;
-  color: #fff;
+  color: $white;
   font-family: Lato, Helvetica, Arial, sans-serif;
   font-size: 14px;
   font-weight: normal;
@@ -101,7 +111,7 @@ button,
 }
 
 .btn:hover, .btn:focus {
-  background-color: #e00000;
+  background-color: $btn-background-hover;
   text-decoration: none;
   outline: none;
 }
@@ -125,16 +135,4 @@ button,
 
 .app-descripton {
   padding: 0 30px;
-}
-
-@include bp(xtrasmall) {
-  body {
-    font-size: 1em;
-  }
-
-  .logo {
-    height: 150px;
-    width: 150px;
-    margin: 0 auto;
-  }
 }
