@@ -54,6 +54,12 @@ Start the Express server.
 heroku local web
 ```
 
+Initialize gulp watch for css, js, and svg files
+
+```
+gulp watch
+```
+
 The app will now be available at http://localhost:5000
 
 ##Miscellaneous Information

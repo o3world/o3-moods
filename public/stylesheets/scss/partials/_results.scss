@@ -1,0 +1,55 @@
+//
+// Results styles
+// --------------------------------------------------
+
+.trait-results {
+  margin: 10px 0;
+}
+
+.trait-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: 8px 0;
+  border-radius: 2px;
+  background-color: $white;
+
+  h2, h3 {
+    font-family: $serif;
+    color: $light-brown;
+  }
+
+  p {
+    font-family: $sans-serif;
+    font-weight: lighter;
+    color: $lighter-gray
+  }
+
+}
+
+.trait-percent {
+  width: 70px;
+  height: 70px;
+  margin: 8px;
+  padding: 17px;
+  font-size: 24px;
+  background-color: $light-brown;
+  color: $white;
+}
+
+.trait-description {
+  width: 70%;
+  margin: 8px;
+  text-align: left;
+
+  .neuroticism--font { color: $mood-red; }
+  .open-agree--font { color: $mood-green; }
+  .conscientiousness--font { color: $mood-blue; }
+  .extraversion--font { color: $mood-purple; }
+
+}
+
+.neuroticism { background-color: $mood-red; }
+.open-agree { background-color: $mood-green; }
+.conscientiousness { background-color: $mood-blue; }
+.extraversion { background-color: $mood-purple; }

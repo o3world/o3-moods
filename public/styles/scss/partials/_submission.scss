@@ -1,0 +1,20 @@
+//
+// Submission styles
+// --------------------------------------------------
+
+.submission {
+  padding: 20px;
+  border-radius: 2pt;
+  background-color: $white;
+}
+
+input {
+  text-align: center;
+  border-radius: 0;
+  -webkit-appearance: none;
+}
+
+input[type='text'] {
+  font-size: 1em;
+  font-family: $serif;
+}

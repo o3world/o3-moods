@@ -3,39 +3,160 @@
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
+<header>
+  <img src="/svg/o3-logo.svg" alt="O3 World logo">
+</header>
+
 <div ng-app="app" ng-controller="MoodController">
+  <div class="loading" ng-hide="!loadState"><img src="svg/loading.svg"></div>
+  <div class="container" ng-show="appStart || !twitterHandleSubmitted">
+    <div class="logo" ng-include="'svg/o3-labsbot-moods.svg'"></div>
 
-  <div class="logo" ng-include="'svg/o3-labsbot-moods.svg'"></div>
+    <h1>O<sub>3</sub> Moods</h1>
+    <div class="underline"></div>
+    <div class="app-descripton">
+      <p>Using technology and social media to set the mood.</p>
+    </div>
+    <div class="section submission">
+        <form id="twitterInput" ng-submit="getData()">
+          <input type="text"
+              id="twitterName"
+              class="form-control form-control-vertical"
+              name="twitterHandle"
+              placeholder="Twitter Handle"
+              ng-model="twitter">
+          <input class="btn" type="submit" value="Submit" ng-click="loading()">
+        </form>
+    </div>
+  </div>
 
-  <h1>O<sub>3</sub> Moods</h1>
+  <div ng-show="twitterHandleSubmitted || !appStart" ng-cloak>
+    <div class="container">
+      <div class="section trait-results">
+        <div class="app-descripton">
+          <p>Your Mood Results.</p>
+        </div>
+        <div class="underline"></div>
 
-  <form id="twitterInput" ng-submit="getData()">
-    <input type="text"
-        id="twitterName"
-        class="form-control form-control-vertical"
-        name="twitterHandle"
-        placeholder="Twitter Handle"
-        ng-model="twitter">
-    <input class="btn" type="submit" value="Submit">
-  </form>
-  <p></p>
+        <div class="logo" ng-include="'svg/o3-labsbot-moods.svg'"></div>
+        <div class="trait-container">
+            <div class="trait-percent" style="background: rgb({{moodHue.red}}, {{moodHue.green}}, {{moodHue.blue}})">
+              <img src="/svg/lightbulb.svg" alt="lightbulb icon">
+            </div>
+            <div class="trait-description">
+              <h2 style="color: rgb({{moodHue.red}}, {{moodHue.green}}, {{moodHue.blue}})">{{colorResult}}</h2>
+              <p>{{colorDescription}}</p>
+            </div>
+        </div>
+      </div>
 
-  <div ng-if="moodHue" ng-cloak>
+      <div class="section trait-results">
+        <div class="app-descripton">
+          <p>Your Twitter Personality Score</p>
+        </div>
+        <div class="underline"></div>
 
-    <div class="explanation-container">
-      <p>Your level of neuroticism is at <span class="color-key background--red">{{neuroticism | number:2 | decimalToPercent}}.</span></p>
-      <p>Your level of openness is at <span class="color-key background--green">{{openness | number:2 | decimalToPercent}}.</span></p>
-      <p>Your level of agreeableness is at <span class="color-key background--green">{{agreeableness | number:2 | decimalToPercent}}.</span></p>
-      <p>Your level of conscientiousness is at <span class="color-key background--blue">{{conscientiousness | number:2 | decimalToPercent}}.</span></p>
-      <p>Your level of extraversion is at <span class="color-key background--purple">{{extraversion | number:2 | decimalToPercent}}.</span></p>
+        <div class="trait-container">
+            <div class="trait-percent neuroticism">{{neuroticism | number:2 | decimalToPercent}}</div>
+            <div class="trait-description">
+              <h2 class="neuroticism--font">Neuroticism</h2>
+              <p>
+                Individuals who score high on neuroticism are more likely than average to experience such feelings as anxiety, anger, envy, guilt, and depressed mood. <span ng-hide="!readMore1">People who are neurotic respond worse to stressors, are more likely to interpret ordinary situations as threatening, and minor frustrations as hopelessly difficult. They are often self-conscious and shy, and they may have trouble controlling urges and delaying gratification.
+                <br>
+                <br>
+                Individuals who score low in neuroticism are more emotionally stable and less reactive to stress. They tend to be calm, even-tempered, and less likely to feel tense or rattled. They generally report more happiness and satisfaction with their lives.</span>
+              </p>
+              <h5 ng-click="readMore1 = !readMore1">
+                <span ng-show="!readMore1">Read More</span>
+                <span ng-hide="!readMore1">Read Less</span>
+              </h5>
+            </div>
+        </div>
+        <div class="trait-container">
+            <div class="trait-percent open-agree">{{openness | number:2 | decimalToPercent}}</div>
+            <div class="trait-description">
+              <h2 class="open-agree--font">Openness</h2>
+              <p>
+                Individuals with a high level of openness are usually imaginative, rather than practical. <span ng-hide="!readMore2">They tend to be creative, curious, open to new and different ideas, and in touch with their feelings.
+                <br>
+                <br>
+                People who score low on openness are considered to be closed to experience. They tend to be conventional and traditional in their outlook and behavior. They prefer familiar routines to new experiences, and generally have a narrower range of interests.</span>
+              </p>
+              <h5 ng-click="readMore2 = !readMore2">
+                <span ng-show="!readMore2">Read More</span>
+                <span ng-hide="!readMore2">Read Less</span>
+              </h5>
+            </div>
+        </div>
+        <div class="trait-container">
+            <div class="trait-percent open-agree">{{agreeableness | number:2 | decimalToPercent}}</div>
+            <div class="trait-description">
+              <h2 class="open-agree--font">Agreeableness</h2>
+              <p>
+                Individuals who score high on agreeableness value getting along with others. <span ng-hide="!readMore3">They are generally considerate, kind, generous, trusting and trustworthy, helpful, and willing to compromise their interests with others.
+                <br>
+                <br>
+                Individuals who score low place self-interest above getting along with others. They are generally unconcerned with others' well-being, and are less likely to extend themselves for other people. Sometimes their skepticism about others' motives causes them to be suspicious, unfriendly, and uncooperative.</span>
+              </p>
+              <h5 ng-click="readMore3 = !readMore3">
+                <span ng-show="!readMore3">Read More</span>
+                <span ng-hide="!readMore3">Read Less</span>
+              </h5>
+            </div>
+        </div>
+        <div class="trait-container">
+            <div class="trait-percent conscientiousness">{{conscientiousness | number:2 | decimalToPercent}}</div>
+            <div class="trait-description">
+              <h2 class="conscientiousness--font">Conscientiousness</h2>
+              <p>
+                Individuals who score high on conscientiousness are typically efficient and organized. <span ng-hide="!readMore4">They exhibit a tendency to show self-discipline, act dutifully, and aim for achievement; they display planned rather than spontaneous behavior; and they are generally organized and dependable.
+                <br>
+                <br>
+                Individuals who score low tend to be laid back, less goal-oriented, and less driven by success; they also are more likely to engage in antisocial behavior.</span>
+              </p>
+              <h5 ng-click="readMore4 = !readMore4">
+                <span ng-show="!readMore4">Read More</span>
+                <span ng-hide="!readMore4">Read Less</span>
+              </h5>
+            </div>
+        </div>
+        <div class="trait-container">
+            <div class="trait-percent extraversion">{{extraversion | number:2 | decimalToPercent}}</div>
+            <div class="trait-description">
+              <h2 class="extraversion--font">Extraversion</h2>
+              <p>
+                Individuals who score high on extraversion tend to enjoy human interactions and to be enthusiastic, talkative, assertive, and gregarious. <span ng-hide="!readMore5">They are energized and thrive off being around other people.
+                <br>
+                <br>
+                Individuals who score low on extraversion are typically perceived as more reserved or reflective. They are likely to enjoy time spent alone and find less reward in time spent with large groups of people, though they may enjoy interactions with close friends.</span>
+              </p>
+              <h5 ng-click="readMore5 = !readMore5">
+                <span ng-show="!readMore5">Read More</span>
+                <span ng-hide="!readMore5">Read Less</span>
+              </h5>
+            </div>
+        </div>
+      </div>
     </div>
 
-    Based on these factors, your mood is:
-    <div class="mood-swatch" style="background: rgb({{moodHue.red}}, {{moodHue.green}}, {{moodHue.blue}})"></div>
+    <footer>
+      <div class="footer-container">
+        <a class="twitter-share-button" href="https://twitter.com/intent/tweet?text=I%20got%20mood%20insights%20from%20O3%20Moods!%20Check%20it%20out%20at%20http://moods.o3labs.com/" target="_blank">
+          <button id="twitter">
+            <div class="button-container">
+              <img src="/svg/twitter.svg" alt="twitter icon">
+              SHARE ON TWITTER
+            </div>
+          </button>
+        </a>
+        <button id="start-over">
+          <div class="button-container" ng-click="resetApp()">
+            <img src="/svg/o3-labsbot-moods-dark.svg" alt="O3 Moods logo">
+            START OVER
+          </div>
+        </button>
+      </div>
+    </footer>
 
-    <h3>Other Traits</h3>
-    <p ng-repeat="trait in personalityData" ng-cloak>
-      {{trait.id}}: {{trait.percentage*100 | number:0}}%
-    </p>
   </div>
 </div>

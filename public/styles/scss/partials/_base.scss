@@ -1,0 +1,151 @@
+//
+// Base
+// --------------------------------------------------
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  color: $white;
+  font-family: "Roboto Slab", Georgia, Times, serif;
+  font-size: 0.875em;
+  text-align: center;
+  background-color: $black;
+  background: url('../images/bg-deepspace.jpg');
+  background-size: cover;
+  background-repeat: repeat;
+  background-attachment: fixed;
+  height: 100%;
+
+  @include bp(xtrasmall) {
+    font-size: 1em;
+  }
+}
+
+h1, h2, h3 {
+  font-family: Lato, Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+  margin-top: 0;
+}
+
+h1 {
+  font-size: 1.75em;
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-size: 1.25em;
+  margin-bottom: 10px;
+}
+
+h3 {
+  font-size: 1.125em;
+}
+
+.logo {
+  margin: 0 auto;
+
+  @include bp(xtrasmall) {
+    height: 150px;
+    width: 150px;
+    margin: 0 auto;
+  }
+}
+
+.underline {
+  width: 33px;
+  height: 2px;
+  margin: 0 auto 10px;
+  background-color: $medium-red;
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  padding: 10px 10px;
+  color: $form-text;
+  font-size: 1em;
+  line-height: 1.5;
+  background-color: $form-background;
+  font-family: Lato, Helvetica, Arial, sans-serif;
+  border-radius: 0;
+  border: 2px solid $form-border;
+}
+
+.form-control-vertical {
+  margin-bottom: 10px;
+}
+
+.form-control:focus, .form-control:active {
+  outline: none;
+}
+
+button,
+.btn {
+  display: inline-block;
+  width: 100%;
+  background-color: $btn-background;
+  background-image: none;
+  color: $white;
+  font-family: Lato, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1;
+  text-align: center;
+  text-transform: uppercase;
+  vertical-align: middle;
+  white-space: nowrap;
+  border-radius: 0;
+  border: 3px solid transparent;
+  padding: 16px 30px;
+  margin-bottom: 0;
+  touch-action: manipulation;
+  cursor: pointer;
+  transition: border 0.2s, background 0.2s;
+}
+
+.btn:hover, .btn:focus {
+  background-color: $btn-background-hover;
+  text-decoration: none;
+  outline: none;
+}
+
+::-webkit-input-placeholder {
+  color: $gray;
+}
+::-moz-placeholder {
+  color: $gray;
+}
+:-ms-input-placeholder {
+  color: $gray;
+}
+:-moz-placeholder {
+  color: $gray;
+}
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
+
+.app-descripton {
+  padding: 0 30px;
+}
+
+.loading {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: $black;
+  opacity: 0.5;
+  z-index: 1;
+}

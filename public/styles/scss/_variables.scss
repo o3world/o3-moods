@@ -1,0 +1,68 @@
+//
+// Variables
+// --------------------------------------------------
+
+/********************
+** Breakpoints
+********************/
+
+  $bp-xtrasmall:		480;
+	$bp-small:				768;
+	$bp-medium:				1024;
+	$bp-large:				1200;
+
+
+/********************
+** Media Queries
+********************/
+
+  $mq-xtrasmall:	  "only screen and (min-width: #{$bp-xtrasmall}px)";
+	$mq-small:				"only screen and (min-width: #{$bp-small}px)";
+	$mq-medium:				"only screen and (min-width: #{$bp-medium}px)";
+	$mq-large:				"only screen and (min-width: #{$bp-large}px)";
+	$mq-retina:				"only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (-o-min-device-pixel-ratio: 3/2), only screen and (min-device-pixel-ratio: 1.5), only screen and (min-resolution: 1.5dppx)";
+
+
+/********************
+** Fonts
+********************/
+
+	$baseFontSize: 			16px;
+	$baseLineHeight: 		1.5em;
+
+	$sans-serif: 			'Lato', Helvetica, Arial, sans-serif;
+	$serif: 				'Roboto Slab', Georgia, serif;
+
+
+/********************
+** Colors
+********************/
+
+	$white: #FFFFFF;
+	$gray-f1: #F1F1F1;
+	$gray-e1: #E1E1E1;
+	$gray-c7: #C7C7C7;
+	$gray: #BDCADB;
+  $lighter-gray: #898989;
+	$medium-gray: #666666;
+  $medium-dark-gray: #4A4A4A;
+	$dark-gray: #39393A;
+	$black: #000000;
+
+	$brand-red: #E00000;
+	$medium-red: #CC0000;
+	$dark-red: #990000;
+
+  $mood-red: #E02038;
+  $mood-green: #28C336;
+  $mood-blue: #288BC3;
+  $mood-purple: #5A2EC3;
+
+  $form-background: #f9f9f9;
+  $form-border: #dbdfe2;
+  $form-text: #161515;
+
+  $btn-background: #ca0000;
+  $btn-background-hover: #e00000;
+
+  $twitter-blue: #1DA1F2;
