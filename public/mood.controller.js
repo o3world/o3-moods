@@ -84,7 +84,7 @@ angular.module('mood.controller', [])
         $scope.colorDescription = 'Brown generally means the person is feeling jittery and the mind is wandering.';
       }
 
-    } else if ($scope.moodHue.red <= 204 && $scope.moodHue.green <= 204 && $scope.moodHue.blue >= 90) {
+    } else if ($scope.moodHue.red <= 204 && $scope.moodHue.green <= 204 && $scope.moodHue.blue >= 110) {
       $scope.colorResult = 'BLUE';
       $scope.colorDescription = 'Known as the color of optimism and joy, the ring will mean happiness, at peace. Blue can mean deep thinking, feeling flirty, intense moods, calm, love, passionate and romantic feeling.';
 
