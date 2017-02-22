@@ -57,11 +57,6 @@ angular.module('mood.controller', [])
 
   function determineColor() {
 
-    if ($scope.moodHue.red <= 200 && $scope.moodHue.red >= 61 && $scope.moodHue.green >= 43 && $scope.moodHue.green <= 192 && $scope.moodHue.blue <= 145) {
-      $scope.colorResult = 'BROWN';
-      $scope.colorDescription = 'Brown generally means the person is feeling jittery and the mind is wandering.';
-    }
-
     if ($scope.moodHue.red >= 228 && $scope.moodHue.blue >= 208 && $scope.moodHue.blue >= 10 && $scope.moodHue.blue <= 200) {
       $scope.colorResult = 'YELLOW';
       $scope.colorDescription = 'The shades of yellow show a range of emotions including imaginative, confused, upset, anxious, feeling poetic and deeply observing.';
@@ -75,11 +70,21 @@ angular.module('mood.controller', [])
         $scope.colorResult = 'PINK';
         $scope.colorDescription = 'Pink shows calm and relaxed feeling where bright pink shows affection, love and happiness.';
       }
+
+      if ($scope.moodHue.red >= 61 && $scope.moodHue.green >= 43 && $scope.moodHue.green <= 192 && $scope.moodHue.blue <= 145) {
+        $scope.colorResult = 'BROWN';
+        $scope.colorDescription = 'Brown generally means the person is feeling jittery and the mind is wandering.';
+      }
     }
 
     if ($scope.moodHue.red <= 178 && $scope.moodHue.green >= 72 && $scope.moodHue.blue <= 178) {
       $scope.colorResult = 'GREEN';
       $scope.colorDescription = 'Green generally reflects calm, peaceful, relaxed, energetic and wandering and mixed emotions.';
+
+      if ($scope.moodHue.red >= 61 && $scope.moodHue.green >= 43 && $scope.moodHue.green <= 192 && $scope.moodHue.blue <= 145) {
+        $scope.colorResult = 'BROWN';
+        $scope.colorDescription = 'Brown generally means the person is feeling jittery and the mind is wandering.';
+      }
     }
 
     if ($scope.moodHue.red <= 204 && $scope.moodHue.green <= 204 && $scope.moodHue.blue >= 102) {
