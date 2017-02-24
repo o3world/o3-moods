@@ -171,8 +171,6 @@ angular.module('color.service', [
 
   }
 
-  //console.log(colorResult);
-
   return {
     rgbToHex,
     colors,
