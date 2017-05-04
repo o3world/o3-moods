@@ -18,13 +18,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <p>Using technology and social media to set the mood.</p>
     </div>
     <div class="section submission">
-        <form id="twitterInput" ng-submit="getData()">
+        <form id="twitterInput" name="twitterInput" ng-submit="getData()" novalidate>
           <input type="text"
               id="twitterName"
               class="form-control form-control-vertical"
               name="twitterHandle"
               placeholder="Twitter Handle"
-              ng-model="twitter">
+              ng-model="twitter"
+              required>
+          <p ng-show="(twitterInput.twitterHandle.$invalid || twitterNotFound)" class="text--warning">
+            {{ validationMessage }}
+          </p>
           <input class="btn" type="submit" value="Submit" ng-click="loading()">
         </form>
     </div>

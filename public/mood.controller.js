@@ -8,8 +8,16 @@ angular.module('mood.controller', [])
 
   $scope.appStart = true;
   $scope.twitterHandleSubmitted = false;
+  $scope.validationMessage = "";
+  $scope.twitterNotFound = false;
 
   $scope.getData = () => {
+    if (!$scope.twitterInput.twitterHandle.$valid) {
+      $scope.validationMessage = "Please provide a valid Twitter handle.";
+      resetTwitterHandleSubmit();
+      return;
+    }
+
     $http.put('/api/watson/' + $scope.twitter)
       .then(response => {
         $scope.personalityData = response.data;
@@ -43,7 +51,13 @@ angular.module('mood.controller', [])
           'data': $scope.moodLightReqBody
         });
       }, err => {
-        console.log(err);
+        if (err.status && err.status === 404) {
+          $scope.twitterNotFound = true;
+          $scope.validationMessage = "No public Twitter user found with that handle. Please try again.";
+        } else {
+          $scope.validationMessage = "There was an error processing your request. Please try again.";
+        }
+        return resetTwitterHandleSubmit();
       });
   };
 
@@ -54,15 +68,23 @@ angular.module('mood.controller', [])
     $scope.moodHue.red = 255;
     $scope.moodHue.green = 255;
     $scope.moodHue.blue = 255;
+    $scope.validationMessage = "";
+    $scope.twitterNotFound = false;
   };
 
   $scope.loading = () => {
     $scope.loadState = true;
-  }
+  };
 
   function twitterHandleSubmit() {
     $scope.appStart = false;
     $scope.twitterHandleSubmitted = true;
+    $scope.loadState = false;
+  }
+
+  function resetTwitterHandleSubmit() {
+    $scope.appStart = true;
+    $scope.twitterHandleSubmitted = false;
     $scope.loadState = false;
   }
 

@@ -121,7 +121,7 @@ router.post('/setMoodLight', function(req, res) {
 
   // Set light colors for each light
   let lightStatePromises = [];
-  for (let i = 1; i < (numberOfLights + 1); i++) {
+  for (let i = 1; i < (parseInt(numberOfLights) + 1); i++) {
     lightStatePromises.push(hueApi.setLightState(i, state.rgb(req.body.red, req.body.green, req.body.blue)));
   }
 
