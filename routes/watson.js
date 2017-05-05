@@ -103,13 +103,13 @@ function savePersonalityResponse(username, rgb, response) {
 
 router.post('/setMoodLight', function(req, res) {
   // Check for RGB values in req body
-  if (!req.body.red) {
+  if (typeof req.body.red === 'undefined') {
     return res.status(400).send({'error': 'Missing red value.'});
   }
-  if (!req.body.green) {
+  if (typeof req.body.green === 'undefined') {
     return res.status(400).send({'error': 'Missing green value.'});
   }
-  if (!req.body.blue) {
+  if (typeof req.body.blue === 'undefined') {
     return res.status(400).send({'error': 'Missing blue value.'});
   }
 
