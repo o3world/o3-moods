@@ -69,7 +69,7 @@ The app will now be available at http://localhost:5000
 Local IP Address: <Local IP Address>
 Public IP Address: <Public IP Address>
 
-### IMB Bluemix Platform
+### IBM Bluemix Platform
 
 All Watson services are available via the IBM Bluemix platform. Credentials can be obtained within the service’s “Service Credentials” page in the dashboard.
 
