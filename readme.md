@@ -62,26 +62,26 @@ gulp watch
 
 The app will now be available at http://localhost:5000
 
-##Miscellaneous Information
+## Miscellaneous Information
 
-###Hue Bridge Networking Configuration
+### Hue Bridge Networking Configuration
 
 Local IP Address: <Local IP Address>
 Public IP Address: <Public IP Address>
 
-###IMB Bluemix Platform
+### IMB Bluemix Platform
 
 All Watson services are available via the IBM Bluemix platform. Credentials can be obtained within the service’s “Service Credentials” page in the dashboard.
 
 **Console: https://console.ng.bluemix.net/**
 
-###Twitter API
+### Twitter API
 
 In order to read a user’s twitter feed, the Coffee Personality app will need to access the Twitter API via OAuth authorization. Credentials can be obtained within the authorized app’s “Keys and Access Tokens” page.
 
 **Console: https://apps.twitter.com/**
 
-###Meet Hue Developer API
+### Meet Hue Developer API
 
 The API for interacting with the Philips Hue Bridge is located here:
 http://www.developers.meethue.com/
